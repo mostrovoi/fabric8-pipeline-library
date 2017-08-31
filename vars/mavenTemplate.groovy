@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-def call() {
+def call(body) {
 
     def mavenImage =  'maven'
   

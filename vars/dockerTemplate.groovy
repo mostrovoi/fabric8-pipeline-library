@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-def call() {
+def call(body) {
 
     def dockerImage =  'docker:1.11'
 
