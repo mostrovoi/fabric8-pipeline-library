@@ -2,7 +2,7 @@
 
 def call(Map parameters = [:], body) {
 
-    def defaultLabel = buildId('maven')
+    def defaultLabel = "maven"
     def label = parameters.get('label', defaultLabel)
 
     def mavenImage = parameters.get('mavenImage', 'fabric8/maven-builder:2.2.297')
