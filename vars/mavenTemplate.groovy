@@ -6,12 +6,8 @@ def call(Map parameters = [:], body) {
     def label = parameters.get('label', defaultLabel)
 
     def mavenImage = parameters.get('mavenImage', 'fabric8/maven-builder:2.2.297')
-    def jnlpImage =  'jenkinsci/jnlp-slave:2.62'
-    def inheritFrom = parameters.get('inheritFrom', 'base')
-    def cloud = "kubernetes"
-
-    
-    podTemplate(cloud: cloud, label: label, inheritFrom: "${inheritFrom}",
+    def jnlpImage =  'jenkinsci/jnlp-slave:2.62'    
+    podTemplate(label: label,
             containers: [
                     //[name: 'jnlp', image: "${jnlpImage}", args: '${computer.jnlpmac} ${computer.name}'],
                     [name: 'maven', image: "${mavenImage}", command: '/bin/sh -c', args: 'cat', ttyEnabled: true,
