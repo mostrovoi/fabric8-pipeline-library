@@ -7,6 +7,8 @@ def call(Map parameters = [:], body) {
     def dockerImage = parameters.get('dockerImage', 'docker:1.11')
     def inheritFrom = parameters.get('inheritFrom', 'base')
     def jnlpImage =  'jenkinsci/jnlp-slave:2.62'
+    def cloud = "kubernetes"
+
 
     podTemplate(cloud: cloud, label: label, serviceAccount: 'jenkins', inheritFrom: "${inheritFrom}",
             containers: [

@@ -8,9 +8,9 @@ def call(Map parameters = [:], body) {
     def mavenImage = parameters.get('mavenImage', 'fabric8/maven-builder:2.2.297')
     def jnlpImage =  'jenkinsci/jnlp-slave:2.62'
     def inheritFrom = parameters.get('inheritFrom', 'base')
+    def cloud = "kubernetes"
 
-    echo "building using the docker socket"
-
+    
     podTemplate(cloud: cloud, label: label, inheritFrom: "${inheritFrom}",
             containers: [
                     //[name: 'jnlp', image: "${jnlpImage}", args: '${computer.jnlpmac} ${computer.name}'],
