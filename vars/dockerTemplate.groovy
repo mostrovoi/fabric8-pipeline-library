@@ -1,7 +1,7 @@
 #!/usr/bin/groovy
 def call(Map parameters = [:], body) {
 
-    def defaultLabel = buildId('docker')
+    def defaultLabel = 'docker'
     def label = parameters.get('label', defaultLabel)
 
     def dockerImage = parameters.get('dockerImage', 'docker:1.11')
