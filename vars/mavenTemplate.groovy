@@ -11,7 +11,7 @@ def call(Map parameters = [:], body) {
 
     podTemplate(label: label, inheritFrom: 'base',
             containers: [
-                    [name: 'maven', image: "${mavenImage}", command: '/bin/sh -c', args: 'cat', ttyEnabled: true]]]
+                    [name: 'maven', image: "${mavenImage}", command: '/bin/sh -c', args: 'cat', ttyEnabled: true]]
     ) {
 
         body(
