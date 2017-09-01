@@ -11,7 +11,6 @@ def call(Map parameters = [:], body) {
 
     podTemplate(label: label, inheritFrom: 'base',
             containers: [
-                    //[name: 'jnlp', image: "${jnlpImage}", args: '${computer.jnlpmac} ${computer.name}'],
                     [name: 'maven', image: "${mavenImage}", command: '/bin/sh -c', args: 'cat', ttyEnabled: true,
                      envVars: [
                              [key: 'MAVEN_OPTS', value: '-Duser.home=/root/']]]],

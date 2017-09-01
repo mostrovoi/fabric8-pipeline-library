@@ -4,7 +4,7 @@ def call(Map parameters = [:], body) {
     def label = parameters.get('label', 'docker')
     def dockerImage = parameters.get('dockerImage', 'docker:1.11')
 
-    podTemplate(cloud: cloud, label: label, serviceAccount: 'jenkins', inheritFrom: 'base',
+    podTemplate(label: label, serviceAccount: 'jenkins', inheritFrom: 'base',
             containers: [
                      [name: 'docker', image: "${dockerImage}", command: '/bin/sh -c', args: 'cat', ttyEnabled: true,  workingDir: '/home/jenkins/',
                      envVars: [[key: 'DOCKER_CONFIG', value: '/home/jenkins/.docker/'],[key: 'DOCKER_API_VERSION', value: '1.23']]]],
