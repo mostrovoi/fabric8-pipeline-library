@@ -6,7 +6,7 @@ def call(Map parameters = [:], body) {
 
     podTemplate(label: label, inheritFrom: 'base',
             containers: [
-                    [name: 'maven', image: "${mavenImage}", command: '/bin/sh -c', args: 'cat', ttyEnabled: true,
+                    [name: 'maven', image: "${mavenImage}", command: '/bin/sh -c', args: 'cat', ttyEnabled: true, workingDir: '/home/jenkins/',
                      envVars: [
                              [key: 'MAVEN_OPTS', value: '-Duser.home=/root/']]]],
             volumes: [persistentVolumeClaim(claimName: 'maven-repo', mountPath: '/root/.m2/repository'),

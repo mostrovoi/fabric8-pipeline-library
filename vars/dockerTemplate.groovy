@@ -1,6 +1,6 @@
 #!/usr/bin/groovy
 def call(Map parameters = [:], body) {
-
+    
     def label = parameters.get('label', 'docker')
     def dockerImage = parameters.get('dockerImage', 'docker:1.11')
 
