@@ -11,6 +11,5 @@ def call(body) {
 
   def rc = readFile config.resourceLocation
   
-  kubernetesApply(file: rc, environment: config.environment)
-
+  kubernetesApply(file: rc, environment: config.environment, registry: config.registry)
 }
