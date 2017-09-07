@@ -2,7 +2,7 @@
 def call(Map parameters = [:], body) {
 
     def label = parameters.get('label', "performance")
-    def image = parameters.get('performanceImage', 'cirit/jmeter')
+    def image = parameters.get('performanceImage', 'enekofb/jmeter:base')
 
     podTemplate(label: label, inheritFrom: "base",
             containers: [
