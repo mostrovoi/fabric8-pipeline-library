@@ -9,8 +9,7 @@ def call(Map parameters = [:], body) {
                     [name: 'maven', image: "${mavenImage}", command: '/bin/sh -c', args: 'cat', ttyEnabled: true, workingDir: '/home/jenkins/',
                      envVars: [
                              [key: 'MAVEN_OPTS', value: '-Duser.home=/root/']]]],
-            volumes: [persistentVolumeClaim(claimName: 'maven-repo', mountPath: '/root/.m2/repository'),
-                      hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
+            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
             envVars: [[key: 'DOCKER_HOST', value: 'unix:/var/run/docker.sock'], [key: 'DOCKER_CONFIG', value: '/home/jenkins/.docker/']]) 
     {
         body()
