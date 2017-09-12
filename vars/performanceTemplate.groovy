@@ -6,7 +6,7 @@ def call(Map parameters = [:], body) {
 
     podTemplate(label: label, inheritFrom: "base",
             containers: [
-                            [name: 'performance', image: "${image}", command: '/bin/sh -c', args: 'cat', privileged: true,  workingDir: '/home/jenkins/', ttyEnabled: true, workingDir: '/home/jenkins/']
+                            [name: 'performance', image: "${image}", command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/']
                         ],
             volumes: [         
                     hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
