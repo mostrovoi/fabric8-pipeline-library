@@ -2,7 +2,7 @@
 def call(Map parameters = [:], body) {
 
     def label = parameters.get('label', "clients")
-    def clientsImage = parameters.get('clientsImage', 'fabric8/builder-clients:0.11')
+    def clientsImage = parameters.get('clientsImage', 'fabric8/builder-clients:0.14')
 
     podTemplate(label: label, inheritFrom: "base",
             containers: [
