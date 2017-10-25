@@ -10,6 +10,6 @@ def call() {
             volumes: [         
                     hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
             envVars: [[key: 'DOCKER_HOST', value: 'unix:/var/run/docker.sock'], [key: 'DOCKER_CONFIG', value: '/home/jenkins/.docker/']]) {
-        body()
+        //body()
     }
 }
