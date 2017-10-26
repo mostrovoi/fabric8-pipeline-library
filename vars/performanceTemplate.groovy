@@ -3,9 +3,10 @@ def call(Map parameters = [:], body) {
 
     def label = parameters.get('label', "performance")
     def image = parameters.get('performanceImage', 'blazemeter/taurus')
-
+    def nameImage = parameters.get('nameImage','performance')
+    
     podTemplate(label: label, inheritFrom: "base",
-            containers: [containerTemplate(name: 'performance', image: "${image}", command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/')
+            containers: [containerTemplate(name: nameImage, image: image, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/')
                         ],
             volumes: [         
                     hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
