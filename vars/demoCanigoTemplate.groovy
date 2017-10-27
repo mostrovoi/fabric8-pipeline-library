@@ -14,8 +14,8 @@ def call(Map parameters = [:], body) {
 	
 podTemplate(label: label, containers: [
               containerTemplate(name: nameClientsContainer, image: clientsImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
-              containerTemplate(name: nameMavenContainer, image: mavenImage, command: '/bin/sh -c', args: 'cat', ttyEnabled: true, workingDir: '/home/jenkins/')
-              containerTemplate(name: nameDockerContainer, image: dockerImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/')
+              containerTemplate(name: nameMavenContainer, image: mavenImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
+              containerTemplate(name: nameDockerContainer, image: dockerImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
               containerTemplate(name: namePerformanceContainer, image: performanceImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/')
       		],
             volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
