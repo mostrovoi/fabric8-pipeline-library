@@ -3,7 +3,7 @@ def call(Map parameters = [:], body) {
 
     def label = parameters.get('label', 'democanigopod')
     def nameDockerContainer = parameters.get('nameDockerContainer','docker')
-    def nameClientsContainer = parameters.get('nameDockerContainer','clients')
+    def nameClientsContainer = parameters.get('nameClientsContainer','clients')
     def namePerformanceContainer = parameters.get('namePerformanceContainer','performance')
     def nameMavenContainer = parameters.get('nameMavenContainer', 'maven')
 
@@ -14,7 +14,7 @@ def call(Map parameters = [:], body) {
 	
 podTemplate(label: label, containers: [
               containerTemplate(name: nameMavenContainer, image: mavenImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
-              containerTemplate(name: nameClientsContainer, image: dockerImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
+              containerTemplate(name: nameClientsContainer, image: clientsImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
  			  containerTemplate(name: nameDockerContainer, image: dockerImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
               containerTemplate(name: namePerformanceContainer, image: performanceImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/')
       		],
