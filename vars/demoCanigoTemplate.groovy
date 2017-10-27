@@ -8,7 +8,7 @@ def call(Map parameters = [:], body) {
     def nameMavenContainer = parameters.get('nameMavenContainer', 'maven')
 
     def dockerImage = parameters.get('dockerImage', 'docker:1.11')
-    def clientsImage = parameters.get('clientsImage', 'fabric8/builder-clients:v703b6d9')
+    def clientsImage = parameters.get('clientsImage', 'fabric8/builder-clients:0.14')
     def performanceImage = parameters.get('performanceImage', 'blazemeter/taurus')
     def mavenImage = parameters.get('mavenImage', 'maven')
 	
