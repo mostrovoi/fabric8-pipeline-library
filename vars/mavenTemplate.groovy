@@ -6,7 +6,7 @@ def call(Map parameters = [:], body) {
     def inheritFrom = parameters.get('inheritFrom','base')
     def mavenImage = parameters.get('mavenImage', 'maven')
 
-    podTemplate(label: label, serviceAccount: 'jenkins', inheritFrom: inheritFrom,
+    podTemplate(label: label, inheritFrom: inheritFrom,
             containers: [containerTemplate(name: nameImage, image: mavenImage, command: '/bin/sh -c', args: 'cat', ttyEnabled: true, workingDir: '/home/jenkins/',
                      envVars: [
                              [key: 'MAVEN_OPTS', value: '-Duser.home=/root/']])],

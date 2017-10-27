@@ -6,7 +6,7 @@ def call(Map parameters = [:], body) {
     def inheritFrom = parameters.get('inheritFrom','base')
     def dockerImage = parameters.get('dockerImage', 'docker:1.11')
 
-    podTemplate(label: label, serviceAccount: 'jenkins', inheritFrom: inheritFrom,
+    podTemplate(label: label, inheritFrom: inheritFrom,
             containers: [containerTemplate(name: nameImage, image: dockerImage, command: '/bin/sh -c', args: 'cat', ttyEnabled: true,  workingDir: '/home/jenkins/')
                         ],
             volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],

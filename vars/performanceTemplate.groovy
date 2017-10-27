@@ -6,7 +6,7 @@ def call(Map parameters = [:], body) {
     def inheritFrom = parameters.get('inheritFrom','base')
     def image = parameters.get('performanceImage', 'blazemeter/taurus')
     
-    podTemplate(label: label, serviceAccount: 'jenkins', inheritFrom: inheritFrom,
+    podTemplate(label: label, inheritFrom: inheritFrom,
             containers: [containerTemplate(name: nameImage, image: image, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/')
                         ],
             volumes: [         
