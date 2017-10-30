@@ -20,7 +20,7 @@ podTemplate(label: label, containers: [
  			  containerTemplate(name: nameDockerContainer, image: dockerImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
               containerTemplate(name: namePerformanceContainer, image: performanceImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/')
       		],
-            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
+            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
                       persistenVolumeClaim(claimName: 'maven-repo',mountPath: '/root/.m2')],
             envVars: [[key: 'DOCKER_HOST', value: 'unix:/var/run/docker.sock']])         
     {
