@@ -13,8 +13,8 @@ def call(Map parameters = [:], body) {
     def mavenImage = parameters.get('mavenImage', 'maven')
 	
 podTemplate(label: label, containers: [
-              containerTemplate(name: nameMavenContainer, image: mavenImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
-              envVars: [[key: 'MAVEN_OPTS', value: '-Duser.home=/root/ -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn']],
+              containerTemplate(name: nameMavenContainer, image: mavenImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/',
+              envVars: [[key: 'MAVEN_OPTS', value: '-Duser.home=/root/ -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn']]),
                  
               containerTemplate(name: nameClientsContainer, image: clientsImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
  			  containerTemplate(name: nameDockerContainer, image: dockerImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
