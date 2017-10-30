@@ -14,11 +14,14 @@ def call(Map parameters = [:], body) {
 	
 podTemplate(label: label, containers: [
               containerTemplate(name: nameMavenContainer, image: mavenImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
+              envVars: [[key: 'MAVEN_OPTS', value: '-Duser.home=/root/ -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn']],
+                 
               containerTemplate(name: nameClientsContainer, image: clientsImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
  			  containerTemplate(name: nameDockerContainer, image: dockerImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/'),
               containerTemplate(name: namePerformanceContainer, image: performanceImage, command: '/bin/sh -c', args: 'cat', privileged: true, ttyEnabled: true, workingDir: '/home/jenkins/')
       		],
-            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
+            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
+                      persistenVolumeClaim(claimName: 'maven-repo',mountPath: '/root/.m2')],
             envVars: [[key: 'DOCKER_HOST', value: 'unix:/var/run/docker.sock']])         
     {
         body()
